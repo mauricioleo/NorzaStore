@@ -4,6 +4,8 @@
     Author     : mauricio
 --%>
 
+<%@page import="entidades.articulo"%>
+<%@page import="Metodos.metodosArticulo"%>
 <%@page import="entidades.categoria"%>
 <%@page import="java.util.List"%>
 <%@page import="Metodos.metodosCategoria"%>
@@ -38,6 +40,7 @@ colore en los botones #09dbf9, #22e4ff, #0098ad,
 
 	<!-- Favicons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link href="assets/css/stilos.css" rel="stylesheet" type="text/css"/>
   </head>
 <body>
 
@@ -99,7 +102,7 @@ Menu princpal
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-			  <li class="active"><a >Inicio	</a></li>
+                            <li class="active"><a href="index.jsp">Inicio	</a></li>
 			  <li class=""><a >Catalogo</a></li>
 			  <li class=""><a >Quienes somos</a></li>
 			  <li class=""><a >Ofertas</a></li>
@@ -140,7 +143,7 @@ Menu Lateral
 -->
 	<div class="row">
 <div id="sidebar" class="span3">
-<div class="well well-small">
+    <div class="well well-small">
 	<ul class="nav nav-list"><%
                     metodosCategoria nc = new metodosCategoria();
                     List<categoria> neocat = nc.obtenerCategoria();
@@ -151,41 +154,6 @@ Menu Lateral
 	</ul>
 </div>
     
-    <!-- 
-    Anuncio lateral
--->
-
-			  <div class="well well-small alert alert-warning cntr">
-				  <h2>SuperStore </h2>
-				  <p> 
-					 Todos Los productos a tu mano <br><br><a class="defaultBtn" href="#">Ver mas </a>
-				  </p>
-			  </div>
-			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
-			
-			
-			<br>
-			<br>
-			<ul class="nav nav-list promowrapper">
-			
-			<li style="border:0"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-                                <!-- 
-                                icono de new
-                                -->
-				<a href="#" class="tag"></a>
-				<img src="assets/img/5.jpg" alt="bootstrap template">
-				<div class="caption">
-                                     <p> 
-					 Producto destacado
-				  </p>
-				  <h4><a class="defaultBtn" >ver</a> <span class="pull-right">$22.00</span></h4>
-				</div>
-			  </div>
-			</li>
-		  </ul>
-
 	</div>
             <!-- 
 Slider Principal
@@ -231,74 +199,10 @@ Slider Principal
 Slider Secundario
 -->
 	<div class="well well-small">
-	<h3>New Products </h3>
+            <h3 class="centrado">Nuestros Productos</h3>
 	<hr class="soften"/>
 		<div class="row-fluid">
-		<div id="newProductCar" class="carousel slide">
-            <div class="carousel-inner">
-			<div class="item active">
-			  <ul class="thumbnails">
-				<li class="span3">
-				<div class="thumbnail">
-					
-					<a href="#" class="tag"></a>
-					<a ><img src="assets/img/1.jpg" alt="bootstrap-ring"></a>
-				</div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					
-					<a href="#" class="tag"></a>
-					<a  ><img src="assets/img/2.jpg" alt=""></a>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					
-					<a href="#" class="tag"></a>
-					<a  ><img src="assets/img/3.jpg" alt=""></a>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					
-					<a  ><img src="assets/img/4.jpg" alt=""></a>
-				  </div>
-				</li>
-			  </ul>
-			  </div>
-		   <div class="item">
-		  <ul class="thumbnails">
-			<li class="span3">
-			  <div class="thumbnail">
-				
-				<a  ><img src="assets/img/5.jpg" alt=""></a>
-			  </div>
-			</li>
-			<li class="span3">
-			  <div class="thumbnail">
-				
-				<a ><img src="assets/img/6.jpg" alt=""></a>
-			  </div>
-			</li>
-			<li class="span3">
-			  <div class="thumbnail">
-				
-				<a ><img src="assets/img/7.jpg" alt=""></a>
-			  </div>
-			</li>
-			<li class="span3">
-			  <div class="thumbnail">
-				
-				<a  ><img src="assets/img/8.jpg" alt=""></a>
-			  </div>
-			</li>
-		  </ul>
-		  </div>
-		   </div>
-		  <a class="left carousel-control" href="#newProductCar" data-slide="prev">&lsaquo;</a>
-            <a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>
-		  </div>
+		
 		  </div>
 		<div class="row-fluid">
 		  <ul class="thumbnails">
@@ -307,17 +211,26 @@ Slider Secundario
 				 
 <!-- 
 Targetas siguentes 
--->				
-				<a ><img src="assets/img/1.jpg" alt=""></a>
+-->				<ul class="nav nav-list"><%
+                    metodosArticulo lp = new metodosArticulo();
+                    List<articulo> neoProd = lp.obtenerArticulo();
+                    
+                    for (int i = 0; i < neoProd.size(); i++){
+                        
+                %><a ><img src="assets/img/1.jpg" alt=""></a>
 				<div class="caption cntr">
-					<p>Manicure & Pedicure</p>
-					<p><strong> $22.00</strong></p>
+                                    <p>kfkfkfkf</p>
+					<p><%out.println(neoProd.get(i).getNombre());%></p>
+                                        <p><strong><%out.println(neoProd.get(i).getPrecio());%></strong></p>
 					<h4><a class="shopBtn" href="#" title="add to cart"> Ver </a></h4>
 					<div class="actionList">
 						
 					</div> 
 					<br class="clr">
-				</div>
+				</div><%
+                } %></a></li>
+	</ul>
+				
 			  </div>
 			</li>
 			<li class="span4">

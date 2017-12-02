@@ -4,28 +4,12 @@
     Author     : mauricio
 --%>
 
-<%@page import="Metodos.metodosCategoria"%>
-<%@page import="entidades.categoria"%>
+<%@page import="entidades.cliente"%>
+<%@page import="Metodos.metodosCliente"%>
+<%@page import="entidades.articulo"%>
 <%@page import="java.util.List"%>
+<%@page import="Metodos.metodosArticulo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-
- categoria cate = new categoria();
- 
- 
- metodosCategoria mcatg = new metodosCategoria();
- 
- mcatg.metodoAgregarCategoria(cate);
-
-
-
-
-
-
-
-
-
-%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,7 +38,6 @@ colore en los botones #09dbf9, #22e4ff, #0098ad,
 
 	<!-- Favicons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link href="assets/css/stilos.css" rel="stylesheet" type="text/css"/>
   </head>
 <body>
 
@@ -121,7 +104,7 @@ Menu princpal
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-                            <li class="active"><a href="index.jsp">Inicio	</a></li>
+			  <li class="active"><a >Inicio	</a></li>
 			  <li class=""><a >Catalogo</a></li>
 			  <li class=""><a >Quienes somos</a></li>
 			  <li class=""><a >Ofertas</a></li>
@@ -142,9 +125,9 @@ Menu princpal
 				  <div class="control-group">
                                       <input type="password" class="span2" id="inputPassword" placeholder="Password" name="pass">
 				  </div>
-<!--				  <div class="control-group">
+				  <div class="control-group">
                                       <button type="submit" class="shopBtn btn-block" name="btnLogin">Sign in</button>
-				  </div>-->
+				  </div>
 				</form>
 				</div>
 			</li>
@@ -157,124 +140,69 @@ Menu princpal
 Menu Lateral
 -->
 	<div class="row">
-<!--<div id="sidebar" class="span3">
-<div class="well well-small">
-	<ul class="nav nav-list">
-		<li><a><span class="icon-chevron-right"></span>Opcion 1</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 2</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 3</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 4</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 5</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 6</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 7</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 8</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 9</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 10</a></li>
-
-	</ul>
-</div>
+	<div class="span12">
     
-     
-    Anuncio lateral
-
-
-			  <div >
-				  
-			  </div>
-			  <div ></div>
-			
-
-	</div>-->
-            <!-- 
-Slider Principal
--->
-	<div class="span9">
-    
-	
-	<hr class="soft"/>
-	<div class=" well marginAuto">
-	<form class="form-horizontal">
-            <h3 class="centrado">Nuevo Producto</h3>
-		<div class="control-group">
-			<label class="control-label" for="nombre">Imagen(url) <sup>*</sup></label>
-			<div class="controls">
-			  <input type="text" id="imagen" placeholder="Imagen(url)">
-			</div>
-		 </div>
-		<div class="control-group">
-			<label class="control-label" for="nombre">Nombre <sup>*</sup></label>
-			<div class="controls">
-			  <input type="text" id="nombre" placeholder="Nombre">
-			</div>
-		 </div>
-		 <div class="control-group">
-			<label class="control-label" for="direccion">Descripcion<sup>*</sup></label>
-			<div class="controls">
-                            <textarea name="message" id="descripcion" placeholder="descricpcion"> </textarea>
-			  
-			</div>
-		 </div>
-                <div class="control-group">
-			<label class="control-label" for="direccion">Marca<sup>*</sup></label>
-			<div class="controls">
-                            <textarea name="message" id="marca" placeholder="Marca"> </textarea>
-			  
-			</div>
-		 </div>
-                <div class="control-group">
-		<label class="control-label">categoria<sup>*</sup></label>
-		<div class="controls">
-		<select class="span1" name="cargo">
-			<option value="">-</option>
-                        <%
-            List<categoria> categorias = mcatg.obtenerCategoria();
-            for(int i = 0; i < categorias.size(); i++){
-            %><option value="<%%>"><%out.println(categorias.get(i).getNombre());%></option>
-                        
-                
+	<div class="well well-small">
+		<h1>Productos <small class="pull-right"> X producto(s) </small></h1>
+	<hr class="soften"/>	
+        
+        <form action="#" class="navbar-search pull-left">
+			  <input type="text" placeholder="Estoy buscando..." class="search-query span2">
+                         
+		 <input  type="submit" name="submitAccount" value="Buscar" class="exclusive shopBtn">
+		
+	</form>
+	<table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+                  <th>Producto(s)</th>
+                  <th>Nombre</th>
+		  <th>Descripcion</th>
+                  <th>Categoria</th>
+                  <th>precio unitario</th>
+                  <th>cantidad </th>
+                  <th>Cambio</th>
+				</tr>
+              </thead>
+             
+              <tbody>
+                  <%
+                  metodosCliente nc = new metodosCliente();
+                  List<cliente> cliente = nc.obtenerCliente();
+                  
+                  for(int o = 0; o < cliente.size(); o++){
+                      %><p><%out.println(cliente.get(o).getNombre());%></p><%
+                  }
+                      
+                  metodosArticulo art = new metodosArticulo();
+                  List <articulo> Art = art.obtenerArticulo();
+                  for(int i = 0; i < Art.size(); i++){
+                  %>
+                <tr>
+                  <td><img width="100" src="<%out.println(Art.get(i).getImgArticulo());%>" alt=""></td>
+                  <td><%out.println(Art.get(i).getNombre());%></td>
+                  <td><%out.println(Art.get(i).getDescripcion());%></td>
+                  <td><%out.println(Art.get(i).getIdCategoria());%></td>
+                  <td><%out.println(Art.get(i).getPrecio());%></td>
+                  <td><%out.println(Art.get(i).getStock());%></td>
+                  <td><span class="shopBtn"><span class="icon-undo"></span></span> <span class="shopBtn"><span class="icon-ban-circle"></span></span>       </td>
+                </tr>
                 <%
                 }
                 %>
-			
-		</select>
-		</div>
-		</div>
-                 <div class="control-group">
-			<label class="control-label" for="telefono">Precio<sup>*</sup></label>
-			<div class="controls">
-                            <input type="text" id="Precio" placeholder="Precio $$"> 
-			  
-			</div>
-		 </div>
-                 <div class="control-group">
-			<label class="control-label" for="telefono">Stock<sup>*</sup></label>
-			<div class="controls">
-                            <input type="text" id="stock" placeholder="Stock"> 
-			  
-			</div>
-		 </div>
+                </tbody>
+            </table><br/>
 		
 		
-	<div class="control-group">
-		<div class="controls">
-		 <input type="submit" name="submitAccount" value="Registar" class="exclusive shopBtn">
-		</div>
-	</div>
-                </div>
-                 	</form>
+           
+					
+	<a href="index.jsp" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Volver a la pagina principal </a>
+	<a href="" class="shopBtn btn-large pull-right">aceptar <span class="icon-arrow-right"></span></a>
 
-		
 </div>
-        <!-- 
-seciones no usadas
--->
+</div>
+</div>
 	
-	<hr>
-	
-	
-	
-	</div>
-	</div>
 
 
 

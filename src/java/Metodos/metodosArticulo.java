@@ -119,7 +119,7 @@ public class metodosArticulo {
     }
     
     //Obtener articulos
-     public List<articulo> obtenerContactos(){
+     public List<articulo> obtenerArticulo(){
          baseDatos bd = new baseDatos();
         List<articulo> contactos = new ArrayList();
         try {
@@ -136,13 +136,14 @@ public class metodosArticulo {
                 articulo a = new articulo();
                 
                 a.setIdArticulo(datos.getInt("idArticulo"));
-                a.setImgArticulo(datos.getString("imgArticulo"));
+//                a.setImgArticulo(datos.getString("imgArticulo"));
                 a.setNombre(datos.getString("nombre"));
                 a.setDescripcion(datos.getString("descripcion"));
                 a.setMarca(datos.getString("marca"));
                 a.setIdCategoria(datos.getInt("idCategoria"));
                 a.setPrecio(datos.getInt("precio"));
                 a.setStock(datos.getInt("stock"));
+                
                 
                 articulo.add(a);
             }

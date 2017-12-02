@@ -49,7 +49,7 @@ String username = request.getParameter("usuario");
 String password = request.getParameter("pass");
     
 if (request.getParameter("btnCerrarSesion") != null) {
-    response.sendRedirect("/muck/index.jsp");
+    response.sendRedirect("/NorzaStore/index.jsp");
     sesion.removeAttribute("usuario");
     sesion.removeAttribute("password");
 }
@@ -62,6 +62,7 @@ if (request.getParameter("btnPerfil")!= null) {
     
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="topNav">
+            <a href="indexCliente.jsp"></a>
 		<div class="container">
 			<div class="alignR">
 				<div class="pull-left socialNw">
@@ -174,9 +175,9 @@ Slider Principal
 <div>
 
 </div>
-	<div class="well">
+	<div class="well contenedor">
             <form class="form-horizontal" method="POST">
-		<h3>Nuevo usuario</h3>
+                <h3 class="centrado">Nuevo usuario</h3>
 		
 		<div class="control-group">
 			<label class="control-label" for="nombre">Nombre <sup>*</sup></label>

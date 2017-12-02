@@ -4,7 +4,28 @@
     Author     : mauricio
 --%>
 
+<%@page import="Metodos.metodosCategoria"%>
+<%@page import="entidades.categoria"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+
+ categoria cate = new categoria();
+ 
+ 
+ metodosCategoria mcatg = new metodosCategoria();
+ 
+ mcatg.metodoAgregarCategoria(cate);
+
+
+
+
+
+
+
+
+
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,6 +54,7 @@ colore en los botones #09dbf9, #22e4ff, #0098ad,
 
 	<!-- Favicons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link href="assets/css/stilos.css" rel="stylesheet" type="text/css"/>
   </head>
 <body>
 
@@ -99,7 +121,7 @@ Menu princpal
 		  </a>
 		  <div class="nav-collapse">
 			<ul class="nav">
-			  <li class="active"><a >Inicio	</a></li>
+                            <li class="active"><a href="index.jsp">Inicio	</a></li>
 			  <li class=""><a >Catalogo</a></li>
 			  <li class=""><a >Quienes somos</a></li>
 			  <li class=""><a >Ofertas</a></li>
@@ -120,9 +142,9 @@ Menu princpal
 				  <div class="control-group">
                                       <input type="password" class="span2" id="inputPassword" placeholder="Password" name="pass">
 				  </div>
-				  <div class="control-group">
+<!--				  <div class="control-group">
                                       <button type="submit" class="shopBtn btn-block" name="btnLogin">Sign in</button>
-				  </div>
+				  </div>-->
 				</form>
 				</div>
 			</li>
@@ -135,7 +157,7 @@ Menu princpal
 Menu Lateral
 -->
 	<div class="row">
-<div id="sidebar" class="span3">
+<!--<div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
 		<li><a><span class="icon-chevron-right"></span>Opcion 1</a></li>
@@ -152,9 +174,9 @@ Menu Lateral
 	</ul>
 </div>
     
-    <!-- 
+     
     Anuncio lateral
--->
+
 
 			  <div >
 				  
@@ -162,7 +184,7 @@ Menu Lateral
 			  <div ></div>
 			
 
-	</div>
+	</div>-->
             <!-- 
 Slider Principal
 -->
@@ -170,10 +192,15 @@ Slider Principal
     
 	
 	<hr class="soft"/>
-	<div class="well">
+	<div class=" well marginAuto">
 	<form class="form-horizontal">
-		<h3>Nuevo Producto</h3>
-		
+            <h3 class="centrado">Nuevo Producto</h3>
+		<div class="control-group">
+			<label class="control-label" for="nombre">Imagen(url) <sup>*</sup></label>
+			<div class="controls">
+			  <input type="text" id="imagen" placeholder="Imagen(url)">
+			</div>
+		 </div>
 		<div class="control-group">
 			<label class="control-label" for="nombre">Nombre <sup>*</sup></label>
 			<div class="controls">
@@ -199,9 +226,16 @@ Slider Principal
 		<div class="controls">
 		<select class="span1" name="cargo">
 			<option value="">-</option>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
+                        <%
+            List<categoria> categorias = mcatg.obtenerCategoria();
+            for(int i = 0; i < categorias.size(); i++){
+            %><option value="<%%>"><%out.println(categorias.get(i).getNombre());%></option>
+                        
+                
+                <%
+                }
+                %>
+			
 		</select>
 		</div>
 		</div>
@@ -212,7 +246,6 @@ Slider Principal
 			  
 			</div>
 		 </div>
-                </div>
                  <div class="control-group">
 			<label class="control-label" for="telefono">Stock<sup>*</sup></label>
 			<div class="controls">
@@ -227,7 +260,10 @@ Slider Principal
 		 <input type="submit" name="submitAccount" value="Registar" class="exclusive shopBtn">
 		</div>
 	</div>
-	</form>
+                </div>
+                 	</form>
+
+		
 </div>
         <!-- 
 seciones no usadas

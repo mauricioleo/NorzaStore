@@ -1,3 +1,16 @@
 .conti{
     margin: auto;
 }
+
+.contenedor{
+    width: 420px;
+    margin: auto;
+}
+
+.marginAuto{
+    margin: auto;
+}
+
+.centrado {
+    text-align: center;
+}
