@@ -4,6 +4,8 @@ package entidades;
 
 public class usuario {
     private int idUsuario;
+    private String usuario;
+    private String Contrasena;
     private String nombre;
     private String direccion;
     private String cargo;
@@ -56,6 +58,22 @@ public class usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getContrasena() {
+        return Contrasena;
+    }
+
+    public void setContrasena(String Contrasena) {
+        this.Contrasena = Contrasena;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
     
     

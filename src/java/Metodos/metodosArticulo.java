@@ -121,7 +121,7 @@ public class metodosArticulo {
     //Obtener articulos
      public List<articulo> obtenerArticulo(){
          baseDatos bd = new baseDatos();
-        List<articulo> contactos = new ArrayList();
+        List<articulo> articulo = new ArrayList();
         try {
             //Abrir Conexion 
             bd.abrirConexion(); 
@@ -136,7 +136,7 @@ public class metodosArticulo {
                 articulo a = new articulo();
                 
                 a.setIdArticulo(datos.getInt("idArticulo"));
-//                a.setImgArticulo(datos.getString("imgArticulo"));
+                //a.setImgArticulo(datos.getString("imgArticulo"));
                 a.setNombre(datos.getString("nombre"));
                 a.setDescripcion(datos.getString("descripcion"));
                 a.setMarca(datos.getString("marca"));
@@ -155,7 +155,7 @@ public class metodosArticulo {
             bd.cerrarConexion();
         }
         
-        return contactos;
+        return articulo;
     }
     
     

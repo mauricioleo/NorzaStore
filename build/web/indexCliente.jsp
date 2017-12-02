@@ -4,6 +4,9 @@
     Author     : mauricio
 --%>
 
+<%@page import="entidades.categoria"%>
+<%@page import="java.util.List"%>
+<%@page import="Metodos.metodosCategoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,9 +46,8 @@ String username = request.getParameter("usuario");
 String password = request.getParameter("pass");
     
 if (request.getParameter("btnCerrarSesion") != null) {
-    response.sendRedirect("/proyectoF/index.jsp");
+    response.sendRedirect("/NorzaStore/index.jsp");
     sesion.removeAttribute("usuario");
-    sesion.removeAttribute("password");
 }
 
 if (request.getParameter("btnPerfil")!= null) {
@@ -127,18 +129,13 @@ Menu Lateral
 	<div class="row">
 <div id="sidebar" class="span3">
 <div class="well well-small">
-	<ul class="nav nav-list">
-		<li><a ><span class="icon-chevron-right"></span>Opcion 1</a></li>
-		<li><a ><span class="icon-chevron-right"></span>Opcion 2</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 3</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 4</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 5</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 6</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 7</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 8</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 9</a></li>
-		<li><a><span class="icon-chevron-right"></span>Opcion 10</a></li>
-
+	<ul class="nav nav-list"><%
+                    metodosCategoria nc = new metodosCategoria();
+                    List<categoria> neocat = nc.obtenerCategoria();
+                    
+                    for (int i = 0; i < neocat.size(); i++){
+                %><li><a><span class="icon-chevron-right"></span><% out.println(neocat.get(i).getNombre());%></a></li><%
+                } %></a></li>
 	</ul>
 </div>
     

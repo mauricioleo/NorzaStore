@@ -4,6 +4,9 @@
     Author     : mauricio
 --%>
 
+<%@page import="Metodos.metodosUsuario"%>
+<%@page import="entidades.usuario"%>
+<%@page import="Metodos.metodoLogin"%>
 <%@page import="entidades.articulo"%>
 <%@page import="Metodos.metodosArticulo"%>
 <%@page import="entidades.categoria"%>
@@ -45,21 +48,35 @@ colore en los botones #09dbf9, #22e4ff, #0098ad,
 <body>
 
 <%
-
+    
 HttpSession sesion = request.getSession();
 String username = request.getParameter("usuario");
 String password = request.getParameter("pass");
     
+
+metodoLogin intro  = new metodoLogin();
+
+
+
 if (request.getParameter("btnLogin") != null) {
-    if (username.equals("mauricio") && password.equals("leon")) {
-            response.sendRedirect("indexCliente.jsp");
-            sesion.setAttribute("usuario", username);
-            sesion.setAttribute("password", password);
+    if (intro.Login(username, password) == true) {
+            out.println("<script>alert('Bienvenido ');</script>");
+            response.sendRedirect("indexAdmin.jsp");
+            session.setAttribute("usuario", username);
+            
         }else{
         out.println("<script>alert('Usuario o cotraseña incorrecta');</script>");
-        }
     }
 
+    
+//    if (entrar.getUsuario()== username && entrar.getContrasena() == password) {
+//            response.sendRedirect("indexAdmin.jsp");
+//            sesion.setAttribute("usuario", username);
+//            sesion.setAttribute("password", password);
+//        }else{
+//        out.println("<script>alert('Usuario o cotraseña incorrecta');</script>");
+//        }
+    }
 %>
     
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -198,7 +215,7 @@ Slider Principal
 <!--
 Slider Secundario
 -->
-	<div class="well well-small">
+	<div class="well well-small productos">
             <h3 class="centrado">Nuestros Productos</h3>
 	<hr class="soften"/>
 		<div class="row-fluid">
@@ -206,33 +223,33 @@ Slider Secundario
 		  </div>
 		<div class="row-fluid">
 		  <ul class="thumbnails">
-			<li class="span4">
-			  <div class="thumbnail">
+			
 				 
-<!-- 
-Targetas siguentes 
--->				<ul class="nav nav-list"><%
+				<%
                     metodosArticulo lp = new metodosArticulo();
                     List<articulo> neoProd = lp.obtenerArticulo();
                     
-                    for (int i = 0; i < neoProd.size(); i++){
+//                    
                         
-                %><a ><img src="assets/img/1.jpg" alt=""></a>
+                        for(int i = 0; i < neoProd.size(); i ++){
+                            %><li class="span4">
+			  <div class="thumbnail">
+				<p><strong><%out.println(neocat.get(i).getNombre());%></strong></p>
+				<a ><img src="assets/img/2.jpg" alt=""></a>
 				<div class="caption cntr">
-                                    <p>kfkfkfkf</p>
-					<p><%out.println(neoProd.get(i).getNombre());%></p>
-                                        <p><strong><%out.println(neoProd.get(i).getPrecio());%></strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Ver </a></h4>
+                                    <h3><%out.println(neoProd.get(i).getNombre());%></h3>
+                                    <p><strong>$<%out.println(neoProd.get(i).getPrecio());%></strong></p>
+					<h4><a class="shopBtn" href="#" title="add to cart"> Agregar a Carrito </a></h4>
 					<div class="actionList">
 						
 					</div> 
 					<br class="clr">
-				</div><%
-                } %></a></li>
-	</ul>
-				
+				</div>
 			  </div>
-			</li>
+			</li><%
+                        }
+                        %>
+                        
 			<li class="span4">
 			  <div class="thumbnail">
 				

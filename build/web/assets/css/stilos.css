@@ -14,3 +14,10 @@
 .centrado {
     text-align: center;
 }
+
+.productos{
+    width: 910px;
+    float: right;
+    border: 1px solid lightgrey;
+    box-shadow: -7px 7px 3px -3px #dad9d9;
+}

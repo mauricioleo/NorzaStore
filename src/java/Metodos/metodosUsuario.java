@@ -125,7 +125,7 @@ public class metodosUsuario {
             StringBuilder query = new StringBuilder();
             query.append(" SELECT * FROM usuario ")
                     ;
-    
+   
             ResultSet datos = bd.consultarDatos(query.toString());
             
             while(datos.next()){
@@ -137,6 +137,8 @@ public class metodosUsuario {
                 a.setCargo(datos.getString("cargo"));
                 a.setTelefono(datos.getString("telefono"));
                 a.setEmail(datos.getString("email"));
+                a.setUsuario(datos.getString("usuario"));
+                a.setContrasena(datos.getString("contrasena"));
                                 
                 usuarios.add(a);
             }
